@@ -11,7 +11,7 @@ export default class App extends Component {
 
   state = {
     showRandomPlanet: true,
-    selectedPerson: null
+    selectedPerson: 4
   }
 
   onPersonSelected = id => {
@@ -24,7 +24,6 @@ export default class App extends Component {
       <div>
         <Header />
         <RandomPlanet />
-  
         <div className="row mb2">
           <div className="col-md-6">
             <ItemList onItemsSelected={this.onPersonSelected} />
