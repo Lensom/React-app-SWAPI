@@ -3,13 +3,20 @@ import React, { Component } from "react";
 import Header from "../header";
 import RandomPlanet from "../random-planet";
 import ErrorIndicator from "../error-indicator";
-import PeoplePage from "../people-page";
 import ItemDetails, { Record } from "../item-details";
 import SwapiService from "../../services/swapi-service";
 import ErrorBoundry from "../error-boundry";
-import Row from "../row";
 
 import "./app.css";
+
+import {
+  PersonDetails,
+  PlanetDetails,
+  StarshipDetails,
+  PersonList,
+  PlanetList,
+  StarshipList,
+} from "../sw-components";
 
 export default class App extends Component {
   swapiService = new SwapiService();
@@ -43,6 +50,8 @@ export default class App extends Component {
       getStarship,
       getPersonImage,
       getStarshipImage,
+      getAllPeople,
+      getAllPlanets,
     } = this.swapiService;
 
     const personDetails = (
@@ -67,19 +76,18 @@ export default class App extends Component {
       <ErrorBoundry>
         <div className="stardb-app">
           <Header />
-          {planet}
-          <Row left={personDetails} right={starshipDetails}></Row>
 
-          <div className="row mb2 button-row">
-            <button
-              className="toggle-planet btn btn-warning btn-lg"
-              onClick={this.toggleRandomPlanet}
-            >
-              Toggle Random Planet
-            </button>
-          </div>
+          <PersonDetails itemId={11} />
 
-          <PeoplePage />
+          <PlanetDetails itemId={2} />
+
+          <StarshipDetails itemId={9} />
+
+          <PersonList />
+
+          <StarshipList />
+
+          <PlanetList />
         </div>
       </ErrorBoundry>
     );
