@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import SwapiService from "../../services/swapi-service";
 
 import "./item-details.css";
 
@@ -15,8 +14,6 @@ const Record = ({ item, field, label }) => {
 export { Record };
 
 export default class ItemDetails extends Component {
-  swapiService = new SwapiService();
-
   state = {
     item: null,
     image: null,
@@ -26,8 +23,12 @@ export default class ItemDetails extends Component {
     this.updateItem();
   }
 
-  componentWillUpdate(prevProps) {
-    if (this.props.itemId !== prevProps.itemId) {
+  componentDidUpdate(prevProps) {
+    if (
+      this.props.itemId !== prevProps.itemId ||
+      this.props.getData !== prevProps.getData ||
+      this.props.getImageUrl !== prevProps.getImageUrl
+    ) {
       this.updateItem();
     }
   }
@@ -50,7 +51,7 @@ export default class ItemDetails extends Component {
       return <span>Select a item from a list</span>;
     }
 
-    const { name } = this.state.item;
+    const { name } = item;
 
     return (
       <div className="person-details card">
