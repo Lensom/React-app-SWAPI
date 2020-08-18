@@ -25,9 +25,12 @@ export default class App extends Component {
             <div className="stardb-app">
               <Header />
               <RandomPlanet />
+
+              <Route path="/" render={() => <h2>Welcome to StarDB</h2>} exact />
               <Route path="/people" component={PeoplePage} />
               <Route path="/planets" component={PlanetsPage} />
               <Route path="/starships" component={StarshipsPage} />
+              <Route path="/starships/:id" component={StarshipsPage} />
             </div>
           </Router>
         </SwapiServiceProvider>
