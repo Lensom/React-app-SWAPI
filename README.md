@@ -1,4 +1,4 @@
-[Project link](https://react-app-swapi-jade.vercel.app/)
+[Demo](https://react-app-swapi-jade.vercel.app/)
 
 Description
 ------------
